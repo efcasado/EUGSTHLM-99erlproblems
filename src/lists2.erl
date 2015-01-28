@@ -92,8 +92,15 @@ but_last([H| Tail]) ->
 %% 1.
 %% @end
 %%-------------------------------------------------------------------------
-element_at(_Pos, _List) ->
-    oops.
+element_at(Pos, _List)
+  when Pos =< 0 ->
+    {error, wrong_position};
+element_at(_Pos, []) ->
+    {error, wrong_position};
+element_at(1, [H| _Tail]) ->
+    H;
+element_at(Pos, [_H| Tail]) ->
+    element_at(Pos - 1, Tail).
 
 %%-------------------------------------------------------------------------
 %% @doc
