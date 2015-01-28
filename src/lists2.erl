@@ -79,8 +79,12 @@ last([H| Tail]) ->
 %% Find the last but one element of a list.
 %% @end
 %%-------------------------------------------------------------------------
-but_last(_List) ->
-    oops.
+but_last([]) ->
+    {error, empty_list};
+but_last([ButLast, _Last]) ->
+    ButLast;
+but_last([H| Tail]) ->
+    but_last(Tail).
 
 %%-------------------------------------------------------------------------
 %% @doc
