@@ -185,10 +185,10 @@ compress([H| Tail]) ->
 
 '_compress'([], {_Prev, CompressedList} = _Acc) ->
     reverse(CompressedList);
-'_compress'([H| Tail], {Prev, CompressedList} = Acc)
+'_compress'([H| Tail], {Prev, _CompressedList} = Acc)
   when H == Prev ->
     '_compress'(Tail, Acc);
-'_compress'([H| Tail], {Prev, CompressedList} = _Acc) ->
+'_compress'([H| Tail], {_Prev, CompressedList} = _Acc) ->
     '_compress'(Tail, {H, [H| CompressedList]}).
 
 %%-------------------------------------------------------------------------
