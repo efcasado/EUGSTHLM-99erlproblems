@@ -71,7 +71,7 @@ last([]) ->
     {error, empty_list};
 last([Last]) ->
     Last;
-last([H| Tail]) ->
+last([_H| Tail]) ->
     last(Tail).
 
 %%-------------------------------------------------------------------------
@@ -83,7 +83,7 @@ but_last([]) ->
     {error, empty_list};
 but_last([ButLast, _Last]) ->
     ButLast;
-but_last([H| Tail]) ->
+but_last([_H| Tail]) ->
     but_last(Tail).
 
 %%-------------------------------------------------------------------------
