@@ -41,7 +41,7 @@ ERLC      = $(shell which erlc)
 ERLC_OPTS = -o $(BIN_DIR) -DTEST
 BIN_DIR   = ebin
 SRC_DIR   = src
-SRC_FILES = $(notdir $(shell find $(SRC_DIR) -type file -name *.erl))
+SRC_FILES = $(notdir $(shell find $(SRC_DIR) -type f -name *.erl))
 BIN_FILES = $(patsubst %.erl,$(BIN_DIR)/%.beam,$(SRC_FILES))
 
 VPATH     = $(SRC_DIR)
