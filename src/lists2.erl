@@ -178,8 +178,18 @@ flatten(List) ->
 %% changed.
 %% @end
 %%-------------------------------------------------------------------------
-compress(_List) ->
-    oops.
+compress([]) ->
+    [];
+compress([H| Tail]) ->
+    '_compress'(Tail, {H, [H]}).
+
+'_compress'([], {_Prev, CompressedList} = _Acc) ->
+    reverse(CompressedList);
+'_compress'([H| Tail], {Prev, CompressedList} = Acc)
+  when H == Prev ->
+    '_compress'(Tail, Acc);
+'_compress'([H| Tail], {Prev, CompressedList} = _Acc) ->
+    '_compress'(Tail, {H, [H| CompressedList]}).
 
 %%-------------------------------------------------------------------------
 %% @doc
