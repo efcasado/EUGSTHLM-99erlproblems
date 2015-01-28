@@ -51,7 +51,7 @@ VPATH     = $(SRC_DIR)
 ## =========================================================================
 ##  Targets
 ## =========================================================================
-all: compile test
+all: compile
 
 compile: $(BIN_DIR) $(BIN_FILES)
 
@@ -66,7 +66,7 @@ EUNIT_RUN = erl \
 -pa $(BIN_DIR) \
 -eval 'case eunit:test([{dir,"$(BIN_DIR)"}],[verbose]) of ok -> erlang:halt(0); _ -> erlang:halt(1) end.'
 
-test:
+test: compile
 	$(EUNIT_RUN)
 
 clean:
