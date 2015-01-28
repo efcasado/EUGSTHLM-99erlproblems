@@ -197,8 +197,18 @@ compress([H| Tail]) ->
 %% contains repeated elements they should be placed in separate sublists.
 %% @end
 %%-------------------------------------------------------------------------
-pack(_List) ->
-    oops.
+pack([]) ->
+    [];
+pack([H| Tail]) ->
+    '_pack'(Tail, {H, [[H]]}).
+
+'_pack'([], {_Prev, PackedList} = _Acc) ->
+    reverse(PackedList);
+'_pack'([H1| Tail1], {Prev, [Pack| Tail2] = _PackedList} = _Acc)
+  when H1 == Prev ->
+    '_pack'(Tail1, {Prev, [[H1| Pack]| Tail2]});
+'_pack'([H1| Tail1], {_Prev, PackedList} = _Acc) ->
+    '_pack'(Tail1, {H1, [[H1]| PackedList]}).
 
 %%-------------------------------------------------------------------------
 %% @doc
