@@ -218,8 +218,18 @@ pack([H| Tail]) ->
 %% the number of duplicates of the element E.
 %% @end
 %%-------------------------------------------------------------------------
-encode(_List) ->
-    oops.
+encode([]) ->
+    [];
+encode([H| Tail]) ->
+    '_encode'(Tail, {H, [{1, H}]}).
+
+'_encode'([], {_Prev, EncodedList} = _Acc) ->
+    reverse(EncodedList);
+'_encode'([H| Tail1], {Prev, [{Count, Element}| Tail2] = _EncodedList} = _Acc)
+  when H == Prev ->
+    '_encode'(Tail1, {Prev, [{Count + 1, Element}| Tail2]});
+'_encode'([H| Tail1], {_Prev, EncodedList} = _Acc) ->
+    '_encode'(Tail1, {H, [{1, H}| EncodedList]}).
 
 
 %% =========================================================================
