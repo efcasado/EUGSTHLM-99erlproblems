@@ -134,8 +134,21 @@ reverse(List) ->
 %% forward or backward; e.g. "xamax".
 %% @end
 %%-------------------------------------------------------------------------
-is_palindrome(_List) ->
-    oops.
+is_palindrome(List) ->
+    '_is_palindrome'(List, reverse(List)).
+
+%% This is a naive implementation.
+'_is_palindrome'([] = _List1, [] = _List2) ->
+    true;
+'_is_palindrome'([] = _List1, _List2) ->
+    false;
+'_is_palindrome'(_List1, [] = _List2) ->
+    false;
+'_is_palindrome'([H1| Tail1], [H2| Tail2])
+  when H1 == H2 ->
+    '_is_palindrome'(Tail1, Tail2);
+'_is_palindrome'(_List1, _List2) ->
+    false.
 
 %%-------------------------------------------------------------------------
 %% @doc
