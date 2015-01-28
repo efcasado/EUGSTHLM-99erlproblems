@@ -107,8 +107,13 @@ element_at(Pos, [_H| Tail]) ->
 %% Find the number of elements of a list.
 %% @end
 %%-------------------------------------------------------------------------
-length(_List) ->
-    oops.
+length(List) ->
+    '_length'(List, _Length = 0).
+
+'_length'([], Length) ->
+    Length;
+'_length'([_H| Tail], Length) ->
+    '_length'(Tail, Length + 1).
 
 %%-------------------------------------------------------------------------
 %% @doc
