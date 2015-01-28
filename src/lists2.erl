@@ -120,8 +120,13 @@ length(List) ->
 %% Reverse a list.
 %% @end
 %%-------------------------------------------------------------------------
-reverse(_List) ->
-    oops.
+reverse(List) ->
+    '_reverse'(List, _ReversedList = []).
+
+'_reverse'([], ReversedList) ->
+    ReversedList;
+'_reverse'([H| Tail], ReversedList) ->
+    '_reverse'(Tail, [H| ReversedList]).
 
 %%-------------------------------------------------------------------------
 %% @doc
