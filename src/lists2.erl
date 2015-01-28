@@ -158,8 +158,16 @@ is_palindrome(List) ->
 %% by replacing each list with its elements (recursively).
 %% @end
 %%-------------------------------------------------------------------------
-flatten(_List) ->
-    oops.
+flatten(List) ->
+    '_flatten'(List, []).
+
+'_flatten'([], FlattenedList) ->
+    FlattenedList;
+'_flatten'([H| Tail], FlattenedList)
+  when is_list(H) ->
+    '_flatten'(Tail, FlattenedList ++ flatten(H));
+'_flatten'([H| Tail], FlattenedList) ->
+    '_flatten'(Tail, FlattenedList ++ [H]).
 
 %%-------------------------------------------------------------------------
 %% @doc
