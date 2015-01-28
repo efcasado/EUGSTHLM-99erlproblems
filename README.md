@@ -1,5 +1,5 @@
 # EUG STHLM - 99 Erlang Problems (Part 1)
-[![Build Status](https://travis-ci.org/efcasado/EUGSTHLM-99erlproblems.svg?branch=pt1)](https://travis-ci.org/efcasado/EUGSTHLM-99erlproblems)
+[![Build Status](https://travis-ci.org/efcasado/EUGSTHLM-99erlproblems.svg?branch=pt1-sol)](https://travis-ci.org/efcasado/EUGSTHLM-99erlproblems)
 
 99 Erlang problems to be solved at the Erlang User Group meet-up in Stockholm.
 
