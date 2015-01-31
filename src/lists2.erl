@@ -165,7 +165,7 @@ flatten(List) ->
     FlattenedList;
 '_flatten'([H| Tail], FlattenedList)
   when is_list(H) ->
-    '_flatten'(Tail, FlattenedList ++ flatten(H));
+    '_flatten'(H ++ Tail, FlattenedList);
 '_flatten'([H| Tail], FlattenedList) ->
     '_flatten'(Tail, FlattenedList ++ [H]).
 
